@@ -29,24 +29,43 @@ Published under GPLv3 License.
 
 <body>
 
-    <div>
-        <div>
-            <div class="instrument" id="airspeed"></div>
-            <div class="instrument" id="attitude"></div>
-            <div class="instrument" id="altimeter"></div>            
-        </div>
-        <div>
-            <div class="instrument" id="turn_coordinator"></div>
-            <div class="instrument" id="heading"></div>
-            <div class="instrument" id="variometer"></div>
+    <!--
+    <div style="height: 50vh;">
+        <iframe src='https://map.geo.admin.ch/embed.html?lang=en&topic=ech&bgLayer=ch.swisstopo.pixelkarte-farbe&layers=ch.swisstopo.zeitreihen,ch.bfs.gebaeude_wohnungs_register,ch.bav.haltestellen-oev,ch.swisstopo.swisstlm3d-wanderwege,ch.astra.wanderland-sperrungen_umleitungen,ch.bazl.luftfahrtkarten-icao&layers_opacity=1,1,1,0.8,0.8,1&layers_visibility=false,false,false,false,false,true&layers_timestamp=18641231,,,,,&E=2645229.67&N=1194101.85&zoom=1' width='100%' height='100%' frameborder='0' style='border:0' allow='geolocation'></iframe>
+    </div>
+    -->
+
+    <div style="height: 100vh;">
+        <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=8.200622599263669%2C47.14819710646384%2C8.977905314107419%2C47.4852233407807&amp;layer=mapnik" style="border: 1px solid black"></iframe><br/>
+       
+        <div style="display: flex; position: fixed; bottom: 0;">
+            <div style="display: inline;">
+                <div>
+                    <div class="instrument" id="airspeed"></div>
+                    <div class="instrument" id="attitude"></div>
+                    <div class="instrument" id="altimeter"></div>            
+                </div>
+                <div>
+                    <div class="instrument" id="turn_coordinator"></div>
+                    <div class="instrument" id="heading"></div>
+                    <div class="instrument" id="variometer"></div>
+                </div>
+            </div>
+            <div style=" display: inline; margin: auto; background-color: white;">
+                <p> Hier werden Daten stehen</p>
+            </div>
         </div>
     </div>
+
+    
+
+ 
 
     <script type="text/javascript">
 
         var settings = {
             off_flag: false,
-            size: 300,
+            size: 150,
             showBox: false,
             showScrews: false
         };
@@ -64,14 +83,14 @@ Published under GPLv3 License.
 
         setInterval(function() {
 
-            airspeed.setAirSpeed(120);
+            airspeed.setAirSpeed(60);
 
             attitude.setRoll(30);
             attitude.setPitch(10);
             //attitude.setILSLocalizer(-10);
             //attitude.setILSGlideslope(15);
 
-            altimeter.setAltitude(100);
+            altimeter.setAltitude(11500);
             altimeter.setPressure(29.92);
             turn_coordinator.setTurn(20);
             heading.setHeading(180);
