@@ -46,16 +46,10 @@ Published under GPLv3 License.
 
         var settings = {
             off_flag: false,
-            size: 150,
+            size: 300,
             showBox: false,
             showScrews: false
         };
-
-        var increment = 0;
-        var increment_vario = 0;
-        var ball_increment = 0.5;
-        var ball_right = true;
-        var clockwise_vario = true;
 
         var airspeed = $.flightIndicator('#airspeed', 'airspeed', settings);
         var attitude = $.flightIndicator('#attitude', 'attitude', settings);
@@ -64,44 +58,27 @@ Published under GPLv3 License.
         var heading = $.flightIndicator('#heading', 'heading', settings);
         var variometer = $.flightIndicator('#variometer', 'variometer', settings);
 
+        //needles ausblenden
+        heading.setBeaconOne(0, false);
+        heading.setBeaconTwo(0, false);
+
         setInterval(function() {
 
-            // Airspeed update
-            //airspeed.setAirSpeed(80 * Math.sin(increment/10));
-            airspeed.setAirSpeed(increment);
+            airspeed.setAirSpeed(120);
 
-            // Attitude update
-            attitude.setRoll(30*Math.sin(increment/10));
-            attitude.setPitch(50*Math.sin(increment/20));
-            //attitude.setILSLocalizer(15*Math.sin(increment/30));
-            //attitude.setILSGlideslope(20*Math.sin(increment/30));
+            attitude.setRoll(30);
+            attitude.setPitch(10);
+            //attitude.setILSLocalizer(-10);
+            //attitude.setILSGlideslope(15);
 
-            // Altimeter update
-            altimeter.setAltitude(10*increment);
-            altimeter.setPressure(30+3*Math.sin(increment/50)/10);
-            increment++;
-            
-            // TC update - note that the TC appears opposite the angle of the attitude indicator, as it mirrors the actual wing up/down position
-            turn_coordinator.setTurn((30*Math.sin(increment/10))*-1);
-            turn_coordinator.setSlip(ball_increment);
-            if (ball_increment <= 0) ball_right = true;
-            if (ball_increment >= 1) ball_right = false;
-            if (ball_right == false) ball_increment -= 0.01;
-            else ball_increment += 0.01;
+            altimeter.setAltitude(100);
+            altimeter.setPressure(29.92);
+            turn_coordinator.setTurn(20);
+            heading.setHeading(180);
+           
+        
 
-            // Heading update
-            heading.setHeading(increment);
-            heading.setBeaconOne(increment * 0.5, true);
-            heading.setBeaconTwo(-increment * 0.75, true);
-            
-            // Vario update
-            if (increment_vario > 45) clockwise_vario = false;
-            if (increment_vario < - 45) clockwise_vario = true;
-
-            if (clockwise_vario) increment_vario += 0.3;
-            else increment_vario -= 0.3;
-
-            variometer.setVario(increment_vario);
+            variometer.setVario(5);
 
         }, 50);
 
