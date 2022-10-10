@@ -38,13 +38,40 @@ setInterval(function() {
 
 
 const bat_temp = document.getElementById('bat_temp');
-bat_temp.style.width = 50 + '%';
-bat_temp.style.backgroundColor  = "blue";
+
+number1 = 140;
+
+bat_temp.style.width = number1*100/160 + '%';
+if(number1 < 80){
+    bat_temp.style.backgroundColor  = "green";
+    }
+else if (number1 > 130) {
+    bat_temp.style.backgroundColor  = "red";
+} 
+else {
+    bat_temp.style.backgroundColor  = "yellow";    
+}
 
 const bat_temp_num = document.getElementById('bat_temp_num');
-bat_temp_num.innerHTML = 80 +'°';
+ 
+bat_temp_num.innerHTML = number1 +'°';
 
 const mot_temp = document.getElementById('mot_temp');
-mot_temp.style.width = 70 + '%';
+
+number2 = 87;
+mot_temp.style.width = number2*100/100 + '%';
+if(number2 < 50){
+mot_temp.style.backgroundColor = "green";
+}
+else if (number2 >85) {
+    mot_temp.style.backgroundColor = "red";
+
+} 
+else {
+    mot_temp.style.backgroundColor = "yellow";
+
+}
+
+
 const mot_temp_num = document.getElementById('mot_temp_num');
-mot_temp_num.innerHTML = 300 +'°';
+mot_temp_num.innerHTML = number2 +'°';
